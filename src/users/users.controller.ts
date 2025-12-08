@@ -4,7 +4,6 @@ import { UsersService } from './users.service';
 import { SignUpDto } from './dto/sign-up.dto';
 @Controller('users')
 export class UsersController {
-
   constructor(private readonly userservice: UsersService) {}
 
   @Get()
@@ -17,7 +16,7 @@ export class UsersController {
   }
   @Post()
   async signup(@Body() signupdto: SignUpDto) {
-    console.log(signupdto)
+    console.log(signupdto);
     return await this.userservice.signUp(signupdto);
   }
 }
