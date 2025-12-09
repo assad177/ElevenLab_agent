@@ -30,8 +30,8 @@ export class TwilioService implements OnModuleInit {
   onModuleInit() {
     console.log('🚀 Twilio Service initialized');
 
-    const agentId = this.config.get('AGENT_ID');
-    const apiKey = this.config.get('ELEVEN_LAB_API_KEY');
+    const agentId = 'agent_7201kbbzrwrnetv86dxckseqangd'
+    const apiKey = 'sk_084d3b8180a91bb56ba4410bfd4c843310f46e7327d0d2e2'
 
     if (!agentId || !apiKey) {
       console.error('❌ Missing ElevenLabs credentials');
@@ -48,8 +48,8 @@ export class TwilioService implements OnModuleInit {
     this.wss.on('connection', (ws: TwilioWebSocket) => {
       console.log('📞 Twilio connected');
 
-      const agentId = this.config.get('AGENT_ID');
-      const apiKey = this.config.get('ELEVEN_LAB_API_KEY');
+      const agentId = 'agent_7201kbbzrwrnetv86dxckseqangd'
+      const apiKey = 'sk_084d3b8180a91bb56ba4410bfd4c843310f46e7327d0d2e2'
 
       if (!agentId || !apiKey) {
         console.error('❌ Missing ElevenLabs credentials');
