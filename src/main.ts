@@ -6,10 +6,9 @@ import * as http from 'http';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Create HTTP server
   const server = http.createServer(app.getHttpAdapter().getInstance());
 
-  // Initialize Twilio WebSocket server
+  
   const twilioService = app.get(TwilioService);
   twilioService.initServer(server);
 
