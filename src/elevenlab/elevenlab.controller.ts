@@ -22,7 +22,7 @@ async handleWebhooks(@Req() req, @Res() res) {
   const backendUrl = process.env.BACKEND_URL;
 
   
-  const wsUrl = `ws://134.199.166.202:3000/voice`;
+  const wsUrl = `wss://134.199.166.202:3000/voice`;
 
   console.log('🔗 WebSocket URL:', wsUrl);
   
