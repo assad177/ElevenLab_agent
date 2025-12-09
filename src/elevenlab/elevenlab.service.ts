@@ -17,7 +17,7 @@ export class ElevenLabService {
         agent_id: this.agentId,
         agent_phone_number_id: this.agentPhoneNumberId,
         to_number: toNumber,
-        voice: process.env.ELEVEN_VOICE_ID,
+        // voice: process.env.ELEVEN_VOICE_ID,
         webhook_url: `${process.env.BACKEND_URL}/elevenlab/elevenlabs/webhook`,
         // custom_metadata: {
         //   receiverNumber: toNumber,
