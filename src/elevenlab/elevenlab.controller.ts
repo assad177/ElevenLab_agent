@@ -22,7 +22,7 @@ async handleWebhooks(@Req() req, @Res() res) {
   const backendUrl = process.env.BACKEND_URL;
   console.log('🔍 BACKEND_URL:', backendUrl);
   
-  const wsUrl = `wss://${backendUrl}/voice`;
+  const wsUrl = `wss://134.199.166.202:3000/voice`;
   console.log('🔗 WebSocket URL:', wsUrl);
   
   const twiml = `<?xml version="1.0" encoding="UTF-8"?>
