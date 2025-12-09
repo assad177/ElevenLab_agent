@@ -18,9 +18,9 @@ async handleWebhooks(@Req() req, @Res() res) {
 
   console.log('📞 Incoming call:', callSid, 'from:', from);
   
-  
-  const backendUrl = process.env.BACKEND_URL;
 
+  const backendUrl = 'http://134.199.166.202:3000';
+  console.log('🔍 BACKEND_URL:', backendUrl);
   
   const wsUrl = `wss://134.199.166.202:3000/voice`;
 

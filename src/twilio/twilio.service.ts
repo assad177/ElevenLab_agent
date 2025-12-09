@@ -25,13 +25,24 @@ export class TwilioService implements OnModuleInit {
   private queues = new Map<TwilioWebSocket, QueuedAudio[]>();
   private elevenReady = new Map<TwilioWebSocket, boolean>();
 
+  private apiKey = 'sk_084d3b8180a91bb56ba4410bfd4c843310f46e7327d0d2e2'
+  private agentId = 'agent_7201kbbzrwrnetv86dxckseqangd'
+
+
+
   constructor(private config: ConfigService) {}
 
   onModuleInit() {
     console.log('🚀 Twilio Service initialized');
 
-    const agentId = 'agent_7201kbbzrwrnetv86dxckseqangd'
-    const apiKey = 'sk_084d3b8180a91bb56ba4410bfd4c843310f46e7327d0d2e2'
+    // const agentId = this.config.get('AGENT_ID');
+    const agentId = this.agentId
+
+
+    // const apiKey = this.config.get('ELEVEN_LAB_API_KEY');
+    const apiKey = this.apiKey
+    
+
 
     if (!agentId || !apiKey) {
       console.error('❌ Missing ElevenLabs credentials');
@@ -48,10 +59,9 @@ export class TwilioService implements OnModuleInit {
     this.wss.on('connection', (ws: TwilioWebSocket) => {
       console.log('📞 Twilio connected');
 
-      const agentId = 'agent_7201kbbzrwrnetv86dxckseqangd'
-      const apiKey = 'sk_084d3b8180a91bb56ba4410bfd4c843310f46e7327d0d2e2'
+    
 
-      if (!agentId || !apiKey) {
+      if (!this.agentId || !this.apiKey) {
         console.error('❌ Missing ElevenLabs credentials');
         ws.close();
         return;
@@ -60,8 +70,8 @@ export class TwilioService implements OnModuleInit {
       console.log('🔗 Connecting to ElevenLabs...');
 
       const eleven = new WebSocket(
-        `wss://api.elevenlabs.io/v1/convai/conversation?agent_id=${agentId}`,
-        { headers: { 'xi-api-key': apiKey } }
+        `wss://api.elevenlabs.io/v1/convai/conversation?agent_id=${this.agentId}`,
+        { headers: { 'xi-api-key': this.apiKey } }
       );
 
       this.elevenConnections.set(ws, eleven);
@@ -69,9 +79,7 @@ export class TwilioService implements OnModuleInit {
       this.elevenReady.set(ws, false);
       ws.cleanupDone = false;
 
-      // ------------------------------
-      //  ELEVENLABS EVENTS
-      // ------------------------------
+     
       eleven.on('open', () => {
         console.log('✅ ElevenLabs WebSocket opened');
 
